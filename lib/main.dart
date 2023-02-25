@@ -42,7 +42,11 @@ class _HomeState extends State<Home> {
     // TODO: implement didChangeDependencies
     super.didChangeDependencies();
   }
-
+  @override
+  void didUpdateWidget(covariant Home oldWidget) {
+    // TODO: implement didUpdateWidget
+    super.didUpdateWidget(oldWidget);
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
