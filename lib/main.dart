@@ -53,7 +53,7 @@ class _CounterScreenState extends State<CounterScreen> {
        currentIndex: 1,
        items: [
          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-         BottomNavigationBarItem(icon: Icon(Icons.contact_mail), label: 'Contac'),
+         BottomNavigationBarItem(icon: Icon(Icons.contact_mail), label: 'Contact'),
          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
 
        ],
