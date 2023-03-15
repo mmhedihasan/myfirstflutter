@@ -39,6 +39,11 @@ class _ProductListState extends State<ProductList> {
       appBar: AppBar(
         title: Text('Product List'),
       ),
+      floatingActionButton: FloatingActionButton(
+          onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> const addProduct()));
+          },child: Icon(Icons.add) ,
+      ),
       body: RefreshIndicator(
         onRefresh: () async{
           getProductListFromApi();
@@ -58,6 +63,31 @@ class _ProductListState extends State<ProductList> {
             }
         ),
       )
+    );
+  }
+}
+class addProduct extends StatefulWidget {
+  const addProduct({Key? key}) : super(key: key);
+
+  @override
+  State<addProduct> createState() => _addProductState();
+}
+
+class _addProductState extends State<addProduct> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Add New Product'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+
+          ],
+        ),
+      ),
     );
   }
 }
