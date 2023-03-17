@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:mynewapp/Product_List_Pojo.dart';
@@ -74,6 +75,50 @@ class addProduct extends StatefulWidget {
 }
 
 class _addProductState extends State<addProduct> {
+
+  final TextEditingController productNameETController= TextEditingController();
+  final TextEditingController productCodeETController= TextEditingController();
+  final TextEditingController productQuantityETController= TextEditingController();
+  final TextEditingController productTotalPriceETController= TextEditingController();
+  final TextEditingController productUnitPriceETController= TextEditingController();
+  final TextEditingController productImageETController= TextEditingController();
+  final Client httpClient = Client();
+  Future<void> addNewProductToApi() async {
+    Uri uri = Uri.parse('https://crud.teamrabbil.com/api/v1/CreateProduct');
+    Response response= await httpClient.post(
+        uri,
+        headers: {
+          'Content-Type' : 'application/json'
+        },
+        body: jsonEncode(
+        {
+          "Img": productImageETController.text,
+          "ProductCode": productCodeETController.text,
+          "ProductName": productNameETController.text,
+          "Qty": productQuantityETController.text,
+          "TotalPrice": productTotalPriceETController.text,
+          "UnitPrice": productUnitPriceETController.text
+        }
+    )
+    );
+    final responseJson = jsonDecode(response.body);
+    if(responseJson["status"] == "success"){
+      productImageETController.clear();
+      productUnitPriceETController.clear();
+      productTotalPriceETController.clear();
+      productNameETController.clear();
+      productQuantityETController.clear();
+      productCodeETController.clear();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Data Insert Successfully'))
+      );
+    }else{
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Data Insert Faild'))
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,7 +129,35 @@ class _addProductState extends State<addProduct> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-
+              TextFormField(
+                controller: productNameETController,
+                decoration: const InputDecoration(
+                  hintText: "Product Name"
+                ),
+                ), TextFormField(
+                controller: productCodeETController,
+                decoration: const InputDecoration(
+                  hintText: "Product Code"
+                ),
+                ),TextFormField(
+                controller: productTotalPriceETController,
+                decoration: const InputDecoration(
+                  hintText: "Product Total Price"
+                ),
+                ),TextFormField(
+                controller: productUnitPriceETController,
+                decoration: const InputDecoration(
+                  hintText: "Product Unite Price"
+                ),
+                ),TextFormField(
+                controller: productImageETController,
+                decoration: const InputDecoration(
+                  hintText: "Product Image"
+                ),
+                ),
+            ElevatedButton(onPressed: (){
+              addNewProductToApi();
+            }, child: Text('Submit'))
           ],
         ),
       ),
