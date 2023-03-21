@@ -1,10 +1,8 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:mynewapp/ui/widget/screen_background_widget.dart';
 
 import '../utils/textstyle.dart';
+import '../widget/app_button_widget.dart';
 import '../widget/app_text_field_widget.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -28,25 +26,21 @@ class _LoginScreenState extends State<LoginScreen> {
             Column(
               children: [
                 Text("Get Started With", style: ScreenTitleTextStyle),
-                SizedBox(height: 24),
+                const SizedBox(height: 24),
                 AppTextFieldWidget(
                   controller: TextEditingController(),
                   hintText: "Email",
                 ),
-                SizedBox(height: 24),
+                const SizedBox(height: 24),
                 AppTextFieldWidget(
                     obscureText: true,
                     hintText: "Password",
                     controller: TextEditingController()),
-                SizedBox(height: 24),
-                SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.deepOrange,
-                            padding: const EdgeInsets.all(12)),
-                        onPressed: () {},
-                        child: Icon(Icons.arrow_circle_right_outlined))),
+                const SizedBox(height: 24),
+                AppButtonWidget(
+                  child: const Icon(Icons.arrow_circle_right_outlined),
+                  onTap: (){},
+                ),
               ],
             )
           ],
@@ -55,3 +49,4 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
+
