@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mynewapp/ui/screens/login.dart';
 import 'package:mynewapp/ui/screens/splashscrenn.dart';
 
 void main() {
@@ -10,7 +11,7 @@ class amazingTask extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: SplashScrenn() ,
+      home: LoginScreen() ,
     );
   }
 }
