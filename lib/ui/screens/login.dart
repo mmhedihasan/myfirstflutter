@@ -39,8 +39,22 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(height: 24),
                 AppButtonWidget(
                   child: const Icon(Icons.arrow_circle_right_outlined),
-                  onTap: (){},
+                  onTap: () {},
                 ),
+                const SizedBox(height: 24),
+                TextButton(
+                    onPressed: () {},
+                    child: const Text(
+                      "Forgot Password?",
+                      style: TextStyle(color: Colors.grey),
+                    )),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text("Don't Have an Account?"),
+                    TextButton(onPressed: (){}, child: const Text("Sign Up", style: TextStyle(color: Colors.deepOrange),)),
+                  ],
+                )
               ],
             )
           ],
@@ -49,4 +63,3 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
-
