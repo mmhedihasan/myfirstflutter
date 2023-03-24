@@ -20,7 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: ScreenBackground(
           widget: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(24),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
