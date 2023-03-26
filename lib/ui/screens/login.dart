@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mynewapp/ui/screens/main_bottom_navbar_item.dart';
 import 'package:mynewapp/ui/screens/signup_screen.dart';
 import 'package:mynewapp/ui/widget/screen_background_widget.dart';
 import '../utils/textstyle.dart';
@@ -39,7 +40,12 @@ class _LoginScreenState extends State<LoginScreen> {
             const SizedBox(height: 24),
             AppButtonWidget(
               child: const Icon(Icons.arrow_circle_right_outlined),
-              onTap: () {},
+              onTap: () {
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MainBottomNavbar()),
+                    (route) => false);
+              },
             ),
             const SizedBox(height: 24),
             Row(
@@ -47,7 +53,10 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 TextButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=> const EmailVerification()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const EmailVerification()));
                     },
                     child: const Text(
                       "Forgot Password?",
@@ -57,11 +66,17 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             SignupTextWidget(
               text: const Text("Don't Have an Account?"),
-              child: const Text('SignUp', style: TextStyle(
-                color: Colors.deepOrange,
-              ),),
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>const SignUpScreen()));
+              child: const Text(
+                'SignUp',
+                style: TextStyle(
+                  color: Colors.deepOrange,
+                ),
+              ),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SignUpScreen()));
               },
             )
           ],
@@ -70,7 +85,3 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
-
-
-
-
