@@ -23,7 +23,7 @@ class _CompleteTaskItemState extends State<CompleteTaskItem> {
             date: "12/12/2012",
             type: "Complete",
             onEditPress: (){},
-            onDeletePress: (){},
+            onDeletePress: (){}, BgColor: Colors.green,
           );
 
         }

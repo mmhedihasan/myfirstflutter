@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mynewapp/ui/screens/new_item.dart';
 
 class TaskWidgetItem extends StatelessWidget {
   const TaskWidgetItem({
@@ -8,11 +9,12 @@ class TaskWidgetItem extends StatelessWidget {
     required this.date,
     required this.type,
     required this.onEditPress,
-    required this.onDeletePress,
+    required this.onDeletePress, required this.BgColor,
   });
 
   final String title, description, date, type;
   final VoidCallback onEditPress, onDeletePress;
+  final Color BgColor;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +47,7 @@ class TaskWidgetItem extends StatelessWidget {
               children: [
                 Chip(
                   label: Text(type),
-                  backgroundColor: Colors.green,
+                  backgroundColor: BgColor,
                 ),
                 Spacer(),
                 IconButton(
@@ -65,3 +67,4 @@ class TaskWidgetItem extends StatelessWidget {
     );
   }
 }
+

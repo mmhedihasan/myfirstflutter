@@ -22,7 +22,7 @@ class _CancelTaskItemState extends State<CancelTaskItem> {
             date: "12/12/2012",
             type: "Cancel",
             onEditPress: (){},
-            onDeletePress: (){},
+            onDeletePress: (){}, BgColor: Colors.red,
           );
         }
 

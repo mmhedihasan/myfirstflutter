@@ -55,7 +55,7 @@ class _NewTaskItemState extends State<NewTaskItem> {
                     date: "12/12/2012",
                     type: "New",
                     onEditPress: (){},
-                    onDeletePress: (){},
+                    onDeletePress: (){}, BgColor: Colors.blueAccent,
                   );
                 }
 

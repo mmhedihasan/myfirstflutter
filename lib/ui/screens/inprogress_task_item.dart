@@ -22,7 +22,7 @@ class _InProgressTaskItemState extends State<InProgressTaskItem> {
             date: "12/12/2012",
             type: "In Progress",
             onEditPress: (){},
-            onDeletePress: (){},
+            onDeletePress: (){}, BgColor: Colors.amber,
           );
         }
 
