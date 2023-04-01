@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:mynewapp/ui/screens/main_bottom_navbar_item.dart';
 import 'package:mynewapp/ui/screens/signup_screen.dart';
 import 'package:mynewapp/ui/widget/screen_background_widget.dart';
@@ -24,8 +25,12 @@ class _LoginScreenState extends State<LoginScreen> {
         padding: const EdgeInsets.all(24),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.center,
+          //mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Center(
+              child: LottieBuilder.network(
+                  "https://assets8.lottiefiles.com/packages/lf20_mjlh3hcy.json", height: 300,width: 200,),
+            ),
             Text("Get Started With", style: screenTitleTextStyle),
             const SizedBox(height: 24),
             AppTextFieldWidget(
@@ -43,7 +48,8 @@ class _LoginScreenState extends State<LoginScreen> {
               onTap: () {
                 Navigator.pushAndRemoveUntil(
                     context,
-                    MaterialPageRoute(builder: (context) => const MainBottomNavbar()),
+                    MaterialPageRoute(
+                        builder: (context) => const MainBottomNavbar()),
                     (route) => false);
               },
             ),
