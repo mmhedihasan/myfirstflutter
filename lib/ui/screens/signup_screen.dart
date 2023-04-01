@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mynewapp/data/network_utils.dart';
+import 'package:mynewapp/data/urls.dart';
 import 'package:mynewapp/ui/screens/login.dart';
 import 'package:mynewapp/ui/utils/snackbar_message.dart';
 import 'package:mynewapp/ui/widget/app_button_widget.dart';
@@ -112,17 +113,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       child: const Icon(Icons.arrow_circle_right_outlined),
                       onTap: () async {
                         if (_fromKey.currentState!.validate()) {
-                          final result = await NetworkUtils().postMethod(
-                              "https://task.teamrabbil.com/api/v1/registration",
-                              body: {
-                                "email": emailTextETController.text.trim(),
-                                "mobile": mobileTextETController.text.trim(),
-                                "password": passwordTextETController.text,
-                                "firstName":
-                                    firstNameTextETController.text.trim(),
-                                "lastName":
-                                    lastNameTextETController.text.trim(),
-                              });
+                          final result = await NetworkUtils()
+                              .postMethod(Urls.regUrl, body: {
+                            "email": emailTextETController.text.trim(),
+                            "mobile": mobileTextETController.text.trim(),
+                            "password": passwordTextETController.text,
+                            "firstName": firstNameTextETController.text.trim(),
+                            "lastName": lastNameTextETController.text.trim(),
+                          });
                           if (result != null && result['status'] == 'success') {
                             emailTextETController.clear();
                             mobileTextETController.clear();

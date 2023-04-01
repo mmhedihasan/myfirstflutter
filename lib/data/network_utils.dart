@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
 class NetworkUtils {
@@ -18,7 +19,7 @@ class NetworkUtils {
     }
   }
 
-  Future<dynamic> postMethod(String url, {Map<String, String>? body}) async {
+  Future<dynamic> postMethod(String url, {Map<String, String>? body, VoidCallback? onUnAuthorize}) async {
     try {
       final http.Response response = await http.post(
         Uri.parse(url),
@@ -27,7 +28,9 @@ class NetworkUtils {
       if (response.statusCode == 200) {
         return jsonDecode(response.body);
       } else if (response.statusCode == 401) {
-        print("Unothorized Login");
+        if(onUnAuthorize != null){
+          onUnAuthorize();
+        }
       } else {
         print("Something Went Wrong ${response.statusCode}");
       }
