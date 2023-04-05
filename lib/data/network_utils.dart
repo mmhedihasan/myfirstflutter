@@ -1,7 +1,8 @@
 import 'dart:convert';
-
-import 'package:flutter/cupertino.dart';
+import 'dart:async';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter/cupertino.dart';
 
 class NetworkUtils {
    Future<dynamic> getMethod(String url) async {

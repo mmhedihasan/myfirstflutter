@@ -8,6 +8,7 @@ import 'package:mynewapp/ui/widget/app_text_field_widget.dart';
 import 'package:mynewapp/ui/widget/screen_background_widget.dart';
 import '../utils/textstyle.dart';
 
+
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
 

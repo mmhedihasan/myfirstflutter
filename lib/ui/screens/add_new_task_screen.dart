@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:mynewapp/ui/widget/app_button_widget.dart';
 import 'package:mynewapp/ui/widget/app_text_field_widget.dart';
 import 'package:mynewapp/ui/widget/screen_background_widget.dart';

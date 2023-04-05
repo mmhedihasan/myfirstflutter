@@ -3,6 +3,7 @@ import 'package:mynewapp/data/auth_utils.dart';
 import 'package:mynewapp/ui/screens/login.dart';
 import 'package:mynewapp/ui/screens/update_profile_screen.dart';
 
+
 class UserProfileUpdate extends StatelessWidget {
   const UserProfileUpdate({
     super.key,
@@ -23,7 +24,9 @@ class UserProfileUpdate extends StatelessWidget {
         textColor: Colors.white,
         trailing: IconButton(
             onPressed: () async {
-
+              await AuthUtils.clearData();
+              Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (
+                  context) => LoginScreen()), (route) => false);
             },
             icon: Icon(
               Icons.logout,

@@ -4,6 +4,7 @@ import 'package:mynewapp/data/auth_utils.dart';
 import 'package:mynewapp/ui/screens/login.dart';
 import 'package:mynewapp/ui/screens/main_bottom_navbar_item.dart';
 
+
 import '../widget/screen_background_widget.dart';
 
 class SplashScrenn extends StatefulWidget {
@@ -21,7 +22,7 @@ class _SplashScrennState extends State<SplashScrenn> {
       checkUserAuthState();
     });
   }
-  Future<void> checkUserAuthState() async {
+  void checkUserAuthState() async {
       final bool result = await AuthUtils.checkLoginState();
       if (result){
         await AuthUtils.getAuthData();
