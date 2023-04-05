@@ -26,7 +26,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       TextEditingController();
 
   final GlobalKey<FormState> _fromKey = GlobalKey<FormState>();
-
+  bool _inProgress = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,9 +51,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   AppTextFieldWidget(
                       hintText: 'Email',
                       controller: emailTextETController,
+                      keyboardType: TextInputType.emailAddress,
                       validator: (value) {
                         if (value?.isEmpty ?? true) {
                           return "Enter Your Email";
+                        }
+                        // Define the email pattern using a regular expression
+                        String emailPattern = r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$';
+                        RegExp regex = new RegExp(emailPattern);
+                        if (!regex.hasMatch(value!)) {
+                          return 'Please enter a valid email address';
                         }
                         return null;
                       }),
@@ -87,9 +94,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   AppTextFieldWidget(
                       hintText: 'Mobile',
                       controller: mobileTextETController,
+                      keyboardType: TextInputType.phone,
                       validator: (value) {
                         if (value?.isEmpty ?? true) {
                           return "Enter Your Mobile";
+                        }
+                        // Define the phone number pattern using a regular expression
+                        String phonePattern = r'^\+?[0-9]{10,13}$';
+                        RegExp regex = new RegExp(phonePattern);
+                        if (!regex.hasMatch(value!)) {
+                          return 'Please enter a valid phone number';
                         }
                         return null;
                       }),
@@ -109,10 +123,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   const SizedBox(
                     height: 16,
                   ),
+                  if(_inProgress)
+                    const Center(
+                      child: CircularProgressIndicator(),
+                    )else
                   AppButtonWidget(
                       child: const Icon(Icons.arrow_circle_right_outlined),
                       onTap: () async {
                         if (_fromKey.currentState!.validate()) {
+                          _inProgress = true;
+                          setState(() {
+
+                          });
                           final result = await NetworkUtils()
                               .postMethod(Urls.regUrl, body: {
                             "email": emailTextETController.text.trim(),
@@ -120,6 +142,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             "password": passwordTextETController.text,
                             "firstName": firstNameTextETController.text.trim(),
                             "lastName": lastNameTextETController.text.trim(),
+                          });
+                          _inProgress = false;
+                          setState(() {
+
                           });
                           if (result != null && result['status'] == 'success') {
                             emailTextETController.clear();

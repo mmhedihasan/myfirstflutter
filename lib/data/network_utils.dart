@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
 class NetworkUtils {
-  Future<dynamic> getMethod(String url) async {
+   Future<dynamic> getMethod(String url) async {
     try {
       final http.Response response = await http.get(Uri.parse(url));
       if (response.statusCode == 200) {
@@ -19,7 +19,7 @@ class NetworkUtils {
     }
   }
 
-  Future<dynamic> postMethod(String url, {Map<String, String>? body, VoidCallback? onUnAuthorize}) async {
+   Future<dynamic> postMethod(String url, {Map<String, String>? body, VoidCallback? onUnAuthorize}) async {
     try {
       final http.Response response = await http.post(
         Uri.parse(url),

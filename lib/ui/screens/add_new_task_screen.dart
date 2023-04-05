@@ -30,10 +30,10 @@ class _AddNewTaskState extends State<AddNewTask> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Center(
-                        child: LottieBuilder.network(
-                          "https://assets10.lottiefiles.com/packages/lf20_zavtox71.json", height: 300,width: 200,),
-                      ),
+                      // Center(
+                      //   child: LottieBuilder.network(
+                      //     "https://assets10.lottiefiles.com/packages/lf20_zavtox71.json", height: 300,width: 200,),
+                      // ),
 
                       Text(
                         "Add New Task",
