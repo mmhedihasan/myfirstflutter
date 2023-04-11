@@ -25,19 +25,23 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailETController = TextEditingController();
   final TextEditingController _passwordETController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  // bool _inProgress = false;
+  bool _inProgress = false;
 
   Future<void> login() async {
-    // _inProgress = true;
-    // setState(() {});
+      _inProgress = true;
+      setState(() {
+
+      });
     final result = await NetworkUtils().postMethod(Urls.loginUrl, body: {
       "email": _emailETController.text.trim(),
       "password": _passwordETController.text,
     }, onUnAuthorize: () {
       showSnackBarMessage(context, "Invalid Email or Password", true);
     });
-    // _inProgress = false;
-    // setState(() {});
+    _inProgress = false;
+    setState(() {
+
+    });
     if (result != null && result['status'] == 'success') {
       await AuthUtils.saveUserData(
           result['data']['firstName'],
@@ -100,14 +104,16 @@ class _LoginScreenState extends State<LoginScreen> {
                         return null;
                       }),
                   const SizedBox(height: 24),
-                  // if (_inProgress)
-                  //   const Center(
-                  //     child: CircularProgressIndicator(),
-                  //   )
-                  // else
+                    if(_inProgress)
+                      const Center(
+                        child: CircularProgressIndicator(
+                          color: Colors.deepOrange,
+                        ),
+                      )
+                  else
                     AppButtonWidget(
                       child: const Icon(Icons.arrow_circle_right_outlined),
-                      onTap: () async {
+                      onTap: (){
                         if (_formKey.currentState!.validate()) {
                           login();
                         }
