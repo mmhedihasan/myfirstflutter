@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:mynewapp/ui/screens/splashscrenn.dart';
 
 
-
 class MyHttpOverrides extends HttpOverrides{
   @override
   HttpClient createHttpClient(SecurityContext? context){
@@ -17,14 +16,22 @@ void main() {
   HttpOverrides.global = MyHttpOverrides();
   runApp(const AmazingTask());
 }
-class AmazingTask extends StatelessWidget {
-  const AmazingTask({Key? key}) : super(key: key);
+class AmazingTask extends StatefulWidget {
+   const AmazingTask({Key? key}) : super(key: key);
+
+  static GlobalKey<NavigatorState> globalKey = GlobalKey<NavigatorState>();
 
   @override
+  State<AmazingTask> createState() => _AmazingTaskState();
+}
+
+class _AmazingTaskState extends State<AmazingTask> {
+  @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return  MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashScrenn(),
+      navigatorKey: AmazingTask.globalKey,
+      home: const SplashScrenn(),
     );
   }
 }
